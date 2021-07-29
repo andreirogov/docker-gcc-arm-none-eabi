@@ -42,7 +42,6 @@ test:version:
     - shared
   image:
     name: "$CI_REGISTRY_REPO:$CI_COMMIT_TAG"
-    entrypoint: [""]
   script:
     - |-
       if ! arm-none-eabi-gcc --version; then
