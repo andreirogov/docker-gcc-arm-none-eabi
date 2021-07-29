@@ -14,7 +14,7 @@ FROM frolvlad/alpine-glibc:latest
 # Install make
 RUN apk add --no-cache make
 
-COPY --from=builder /tmp/gcc-arm-none-eabi-*/* /home/dev/gcc-arm-none-eabi
+COPY --from=builder /tmp/gcc-arm-none-eabi-*/* /home/dev/gcc-arm-none-eabi/
 
 # Setup environment
 ENV PATH="/home/dev/gcc-arm-none-eabi/bin:${PATH}"
