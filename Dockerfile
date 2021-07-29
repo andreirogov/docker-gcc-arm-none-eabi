@@ -21,6 +21,3 @@ COPY --from=builder /tmp/gcc-arm-none-eabi /usr/gcc-arm-none-eabi
 ENV PATH="/usr/gcc-arm-none-eabi/bin:${PATH}"
 
 WORKDIR /home/dev
-
-ENTRYPOINT ["arm-none-eabi-gcc"]
-CMD ["--help"]
