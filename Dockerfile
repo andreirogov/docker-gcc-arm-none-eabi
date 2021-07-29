@@ -15,12 +15,12 @@ FROM frolvlad/alpine-glibc:latest
 # Install make
 RUN apk add --no-cache make
 
-COPY --from=builder /tmp/gcc-arm-none-eabi /home/dev/gcc-arm-none-eabi
+COPY --from=builder /tmp/gcc-arm-none-eabi /usr/gcc-arm-none-eabi
 
 # Setup environment
-ENV PATH="/home/dev/gcc-arm-none-eabi/bin:${PATH}"
+ENV PATH="/usr/gcc-arm-none-eabi/bin:${PATH}"
 
-WORKDIR /usr/project
+WORKDIR /home/dev
 
-ENTRYPOINT ["ceedling"]
-CMD ["help"]
+ENTRYPOINT ["arm-none-eabi-gcc"]
+CMD ["--help"]
