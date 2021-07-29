@@ -31,7 +31,7 @@ build:
     - >
       /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile 
       --build-arg TOOLCHAIN_TAR_URL=https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2 
-      --destination "$CI_REGISTRY_REPO:$CI_COMMIT_TAG" # --destination "$CI_REGISTRY_REPO:latest"
+      --destination "$CI_REGISTRY_REPO:$CI_COMMIT_TAG" --destination "$CI_REGISTRY_REPO:latest"
 
 test:version:
   stage: test
