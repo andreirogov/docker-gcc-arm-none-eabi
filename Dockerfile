@@ -7,14 +7,15 @@ RUN cd /tmp && \
   apk add --no-cache curl tar && \
   curl -L ${TOOLCHAIN_TAR_URL} -o gcc-arm-none-eabi.tar && \
   tar -xf gcc-arm-none-eabi.tar && \
-  rm -rf gcc-arm-none-eabi-*/share/doc
+  mv gcc-arm-none-eabi-* gcc-arm-none-eabi && \
+  rm -rf gcc-arm-none-eabi/share/doc
 
 FROM frolvlad/alpine-glibc:latest
 
 # Install make
 RUN apk add --no-cache make
 
-COPY --from=builder /tmp/gcc-arm-none-eabi-*/* /home/dev/gcc-arm-none-eabi/
+COPY --from=builder /tmp/gcc-arm-none-eabi /home/dev/gcc-arm-none-eabi
 
 # Setup environment
 ENV PATH="/home/dev/gcc-arm-none-eabi/bin:${PATH}"
